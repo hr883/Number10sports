@@ -1,0 +1,1519 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number 10 Sports</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Jost:wght@500;600;700;800&family=Oswald:wght@500;600;700&display=swap');
+:root {
+    --bg: #f8f8f6;
+    --surface: #ffffff;
+    --surface-strong: #111111;
+    --primary: #dc143c;
+    --accent: #1a1a1a;
+    --muted: rgba(17,17,17,0.68);
+    --radius: 16px;
+    --max-width: 1400px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+body {
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    background: var(--bg);
+    color: var(--accent);
+    line-height: 1.65;
+    overflow-x: hidden;
+}
+img,
+video {
+    display: block;
+    max-width: 100%;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+button {
+    font: inherit;
+    cursor: pointer;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 48px;
+    z-index: 100;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.navbar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(11,11,11,0.08);
+    backdrop-filter: blur(18px);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.navbar.visible::before,
+.navbar.scrolled::before {
+    opacity: 1;
+}
+.navbar.scrolled {
+    border-bottom: 1px solid rgba(255,255,255,0.14);
+}
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1;
+}
+.logo {
+    height: 54px;
+    width: auto;
+}
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    z-index: 1;
+}
+.nav-links a {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: color 0.25s ease;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: var(--primary);
+}
+.nav-button {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 26px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.14);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.24);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+.nav-button:hover,
+.nav-button:focus-visible {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.24);
+}
+.section-inner {
+    width: min(var(--max-width), calc(100% - 96px));
+    margin: 0 auto;
+}
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+.hero-video-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+.hero-video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.05);
+    filter: brightness(0.72) saturate(1.08);
+}
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.86) 38%, rgba(10,10,10,0.96) 100%);
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 24px;
+    width: min(1120px, 100%);
+}
+.hero-eyebrow {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: var(--primary);
+    font-size: 0.8rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+.hero h1 {
+    color: #ffffff;
+    font-size: clamp(3.8rem, 7vw, 5.6rem);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+    max-width: 12ch;
+    margin-inline: auto;
+}
+.hero-copy {
+    color: rgba(255,255,255,0.88);
+    font-size: 1.05rem;
+    max-width: 720px;
+    margin: 0 auto 36px;
+}
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    padding: 18px 32px;
+    border-radius: 999px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+.hero-cta-primary {
+    background: var(--primary);
+    color: #ffffff;
+}
+.hero-cta-secondary {
+    background: rgba(255,255,255,0.95);
+    color: var(--primary);
+}
+.hero-cta:hover,
+.hero-cta:focus-visible {
+    transform: translateY(-2px);
+}
+.hero-cta-primary:hover {
+    background: #ffffff;
+    color: var(--primary);
+}
+.section-eyebrow {
+    color: var(--primary);
+    font-size: 0.8rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 18px;
+}
+.section-title {
+    font-size: clamp(3rem, 5vw, 4.8rem);
+    line-height: 1.02;
+    margin-bottom: 24px;
+}
+.section-text,
+.card p,
+.play-card p,
+.live-player-meta span,
+.footer-section ul li a,
+.footer-bottom-links a {
+    color: rgba(17,17,17,0.65);
+}
+.section-text,
+.card p,
+.play-card p,
+.footer-section ul li a,
+.footer-bottom-links a {
+    line-height: 1.9;
+    font-size: 1rem;
+}
+.journey-section,
+.ecosystem-section,
+.about-home-section,
+.production-section,
+.stats-section,
+.play-section,
+.live-section,
+.cta-section {
+    padding: 96px 0;
+}
+.journey-section {
+    background: #ffffff;
+}
+.journey-grid {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 28px;
+}
+.journey-item {
+    border: 1px solid rgba(17,17,17,0.08);
+    background: #ffffff;
+    color: var(--accent);
+    border-radius: var(--radius);
+    padding: 20px 26px;
+    min-width: 140px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.journey-item:hover,
+.journey-item:focus-visible,
+.journey-item.active {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+    box-shadow: 0 22px 42px rgba(17,17,17,0.08);
+    background: rgba(255,244,244,0.95);
+}
+.journey-preview {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 28px;
+    margin-top: 42px;
+    align-items: center;
+}
+.journey-preview-image {
+    border-radius: 24px;
+    overflow: hidden;
+    background: #111;
+    box-shadow: 0 24px 60px rgba(17,17,17,0.12);
+}
+.journey-preview-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+}
+.journey-preview-copy h3 {
+    font-size: 2rem;
+    margin-bottom: 18px;
+}
+.ecosystem-section {
+    background: #f8f8f6;
+}
+.ecosystem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+.card {
+    background: var(--surface);
+    border-radius: 24px;
+    border: 1px solid rgba(17,17,17,0.08);
+    padding: 32px;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 60px rgba(17,17,17,0.08);
+    border-color: rgba(220,20,60,0.22);
+}
+.card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+}
+.card-icon.inline-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: rgba(220,20,60,0.08);
+    display: grid;
+    place-items: center;
+    margin-bottom: 22px;
+}
+.card-icon.inline-icon svg {
+    width: 28px;
+    height: 28px;
+    color: var(--primary);
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+}
+.about-home-section {
+    background: linear-gradient(180deg, #ffffff 0%, #f4f4f2 100%);
+}
+.about-home-content {
+    display: grid;
+    grid-template-columns: minmax(260px, 420px) 1fr;
+    gap: 40px;
+    align-items: center;
+}
+.about-home-content h2 {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.02;
+    margin-bottom: 24px;
+}
+.about-home-text {
+    font-size: 1rem;
+    margin-bottom: 18px;
+}
+.about-home-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    list-style: none;
+    margin-top: 24px;
+}
+.about-home-highlights li {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(220,20,60,0.18);
+    background: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+.about-learn-btn {
+    margin-top: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 30px;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.stats-section {
+    background: #ffffff;
+}
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+    gap: 22px;
+    margin-top: 36px;
+}
+.stat-box {
+    background: #f8f8f6;
+    border-radius: 24px;
+    padding: 36px;
+    border: 1px solid rgba(17,17,17,0.08);
+}
+.stat-box h3 {
+    font-size: clamp(2.6rem, 4vw, 3.4rem);
+    color: var(--primary);
+    margin-bottom: 14px;
+}
+.stat-box p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+.production-section {
+    background: #f8f8f6;
+}
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+    gap: 22px;
+    margin-top: 34px;
+}
+.timeline-step {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 32px;
+    border: 1px solid rgba(17,17,17,0.08);
+    display: grid;
+    gap: 16px;
+    position: relative;
+}
+.timeline-step::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -18px;
+    width: 36px;
+    height: 2px;
+    background: rgba(17,17,17,0.12);
+    transform: translateY(-50%);
+}
+.timeline-step:last-child::before {
+    display: none;
+}
+.timeline-step h3 {
+    font-size: 1.3rem;
+}
+.timeline-step p {
+    font-size: 0.98rem;
+}
+.play-section {
+    background: #ffffff;
+}
+.play-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 34px;
+}
+.play-card {
+    border-radius: 24px;
+    overflow: hidden;
+    background: #111111;
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr 170px;
+    min-height: 220px;
+}
+.play-card-content {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.play-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 16px;
+}
+.play-card p {
+    color: rgba(255,255,255,0.82);
+}
+.play-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.live-section {
+    background: #f8f8f6;
+}
+.live-player-section {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 36px;
+}
+.live-player-frame {
+    border-radius: 28px;
+    overflow: hidden;
+    background: #000;
+    min-height: 420px;
+    border: 1px solid rgba(17,17,17,0.08);
+}
+.live-player-link {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    text-decoration: none;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 45%);
+}
+.live-player-link-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 24px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+}
+.live-player-link-inner span {
+    font-size: 1rem;
+    font-weight: 700;
+}
+.live-player-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.live-player-meta {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+.live-player-meta h3 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+.live-player-meta span {
+    color: var(--primary);
+    font-weight: 800;
+}
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    gap: 20px;
+}
+.event-card {
+    border-radius: 24px;
+    background: #ffffff;
+    border: 1px solid rgba(17,17,17,0.08);
+    padding: 26px;
+    display: grid;
+    gap: 14px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.event-card:hover,
+.event-card.active {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+    box-shadow: 0 22px 50px rgba(17,17,17,0.08);
+}
+.event-sport {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--surface-strong), var(--primary));
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+.event-date {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba(17,17,17,0.6);
+}
+.event-title {
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.35;
+}
+.event-card small {
+    color: rgba(17,17,17,0.65);
+}
+.cta-section {
+    background: #111111;
+    color: #ffffff;
+}
+.cta-panel {
+    padding: 60px 48px;
+    border-radius: 32px;
+    background: linear-gradient(180deg, rgba(17,17,17,0.95), rgba(10,10,10,0.98));
+    text-align: center;
+    box-shadow: 0 40px 120px rgba(0,0,0,0.28);
+}
+footer {
+    background: #111111;
+    color: rgba(255,255,255,0.82);
+    padding: 84px 0 28px;
+}
+.footer-content {
+    width: min(1400px, calc(100% - 96px));
+    margin: 0 auto;
+}
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: 28px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-logo {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+.footer-section h4 {
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 18px;
+}
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-section ul li {
+    margin-bottom: 14px;
+}
+.footer-section ul li a {
+    color: rgba(255,255,255,0.72);
+    font-size: 0.95rem;
+}
+.footer-section ul li a:hover {
+    color: var(--primary);
+}
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 30px;
+}
+.footer-bottom-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+.footer-bottom-links a {
+    color: rgba(255,255,255,0.68);
+    font-size: 0.9rem;
+}
+.footer-bottom-links a:hover {
+    color: var(--primary);
+}
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    padding: 0;
+    box-shadow: none;
+    transition: transform 0.2s ease;
+}
+.social-links a:hover {
+    transform: translateY(-1px);
+}
+.social-links a img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    filter: invert(1) brightness(1.2);
+}
+.social-links a.instagram,
+.social-links a.facebook,
+.social-links a.linkedin,
+.social-links a.youtube {
+    background: transparent;
+}
+.popup,
+.journey-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    background: rgba(0,0,0,0.66);
+    backdrop-filter: blur(12px);
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+.popup.active,
+.journey-modal.active {
+    display: flex;
+}
+.popup-content,
+.journey-modal .modal-content {
+    width: min(560px, 100%);
+    padding: 36px;
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: 0 28px 80px rgba(0,0,0,0.22);
+}
+.popup-content h2,
+.journey-modal .modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 22px;
+}
+.form-group {
+    margin-bottom: 18px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(17,17,17,0.12);
+    background: #f7f7f5;
+    font-size: 0.95rem;
+    color: var(--accent);
+}
+.form-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+.submit-btn,
+.close-btn {
+    flex: 1;
+    min-width: 140px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-weight: 800;
+}
+.submit-btn {
+    background: linear-gradient(135deg, var(--primary), #a71332);
+    color: #ffffff;
+    border: none;
+}
+.close-btn {
+    background: #f2f2f2;
+    color: var(--accent);
+    border: 1px solid rgba(17,17,17,0.12);
+}
+.section-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+.action-btn:hover,
+.action-btn:focus-visible {
+    transform: translateY(-2px);
+}
+.know-more-btn {
+    background: var(--surface-strong);
+    color: #ffffff;
+}
+.quote-btn {
+    background: rgba(255,255,255,0.95);
+    color: var(--accent);
+}
+@media (max-width: 1080px) {
+    .navbar {
+        padding: 18px 28px;
+    }
+    .section-inner {
+        width: min(1400px, calc(100% - 56px));
+    }
+    .ecosystem-grid,
+    .timeline-grid,
+    .play-grid,
+    .stats,
+    .events-grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+    }
+    .about-home-content,
+    .journey-preview {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 760px) {
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 18px 24px;
+    }
+    .nav-links {
+        justify-content: center;
+    }
+    .hero {
+        min-height: 84vh;
+    }
+    .hero h1 {
+        font-size: clamp(2.8rem, 10vw, 3.2rem);
+    }
+    .hero-buttons,
+    .footer-bottom,
+    .form-buttons {
+        flex-direction: column;
+    }
+    .timeline-step::before,
+    .timeline-step:last-child::before {
+        display: none;
+    }
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+    .footer-bottom {
+        justify-content: flex-start;
+    }
+}
+@media (max-width: 520px) {
+    .hero-content {
+        padding: 0 16px;
+    }
+    .nav-links {
+        gap: 12px;
+    }
+    .section-inner {
+        width: min(100%, calc(100% - 32px));
+    }
+    .events-grid,
+    .play-grid,
+    .timeline-grid,
+    .ecosystem-grid,
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+<header class="navbar">
+    <a href="#home" class="brand"><img src="images/logo.png" class="logo" alt="Number 10 Sports"></a>
+    <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="#production">Solutions</a>
+        <a href="#play">Play</a>
+        <a href="#impact">Impact</a>
+        <a href="#partner">Partner</a>
+    </nav>
+    <button class="nav-button open-form-trigger">Partner With Us</button>
+</header>
+<main>
+    <section class="hero" id="home">
+        <div class="hero-video-wrap">
+            <video autoplay muted loop playsinline>
+                <source src="videos/video.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">A premium sports ecosystem for India</p>
+            <h1 id="heroTyping"></h1>
+            <p class="hero-copy">From live streaming and events to venues, academies and athlete growth - built for scale and impact.</p>
+            <div class="hero-buttons">
+                <a href="#ecosystem" class="hero-cta hero-cta-primary">Explore Ecosystem</a>
+                <button type="button" class="hero-cta hero-cta-secondary open-form-trigger">Partner With Us</button>
+            </div>
+        </div>
+    </section>
+    <section class="journey-section" id="journey">
+        <div class="section-inner">
+            <p class="section-eyebrow">THE SPORTS JOURNEY WE ENABLE</p>
+            <h2 class="section-title">Every stage of sport, designed as one premium experience.</h2>
+            <div class="journey-grid" role="list">
+                <button class="journey-item active" type="button" data-key="watch">WATCH</button>
+                <button class="journey-item" type="button" data-key="listen">LISTEN</button>
+                <button class="journey-item" type="button" data-key="play">PLAY</button>
+                <button class="journey-item" type="button" data-key="compete">COMPETE</button>
+                <button class="journey-item" type="button" data-key="build">BUILD</button>
+                <button class="journey-item" type="button" data-key="grow">GROW</button>
+            </div>
+            <div class="journey-preview">
+                <div class="journey-preview-image">
+                    <img src="images/football.jpg" alt="Live sports broadcast from stadium">
+                </div>
+                <div class="journey-preview-copy">
+                    <h3 id="journeyPreviewTitle">WATCH</h3>
+                    <p id="journeyPreviewText">Live streaming, highlights, premium sports media and digital fan experiences across India.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="ecosystem" class="ecosystem-section">
+        <div class="section-inner">
+            <p class="section-eyebrow">ONE ECOSYSTEM</p>
+            <h2 class="section-title">Connected sports services at every level.</h2>
+            <div class="ecosystem-grid">
+                <article class="card">
+                    <div class="card-icon inline-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5v15c0 .8.9 1.3 1.6.8l10-7.5c.7-.5.7-1.4 0-1.9l-10-7.5C5.9 3.2 5 3.7 5 4.5z"/></svg></div>
+                    <div>
+                        <h3>OTT & Streaming</h3>
+                        <p>Live sport, on-demand content and broadcast-grade digital delivery.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-icon inline-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V7a3 3 0 0 0-6 0v4a3 3 0 0 0 3 3z"/><path d="M8 14.5a4 4 0 0 0 8 0"/><path d="M12 18.5v2.5"/></svg></div>
+                    <div>
+                        <h3>YouthX</h3>
+                        <p>Stories, podcasts and development programs that connect the next generation.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-icon inline-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M7 20V9.5a1.5 1.5 0 0 1 1.5-1.5h7A1.5 1.5 0 0 1 17 9.5V20"/><path d="M9 7h6M9 11h6"/></svg></div>
+                    <div>
+                        <h3>Infrastructure</h3>
+                        <p>Design, delivery and venue operations for modern sports facilities.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-icon inline-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16V8H4z"/><path d="M10 8V4h4v4"/></svg></div>
+                    <div>
+                        <h3>Experiences</h3>
+                        <p>Fan activations, brand partnerships and venue moments with premium polish.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-icon inline-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4H7z"/><path d="M5 10h14v10H5z"/><path d="M9 16h6"/></svg></div>
+                    <div>
+                        <h3>Event Ops</h3>
+                        <p>End-to-end management for matches, leagues and tournament production.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-icon inline-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18V9a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9"/><path d="M8 8h8"/><path d="M12 8v12"/></svg></div>
+                    <div>
+                        <h3>Stadium Management</h3>
+                        <p>Matchday operations, audience services and premium venue delivery.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-icon inline-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9h12M8 13h8M6 17h12M5 4h14v16H5z"/></svg></div>
+                    <div>
+                        <h3>Franchise Services</h3>
+                        <p>Commercial, team and league support for sports brands and ownership groups.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="section-actions">
+                <a href="live.html" class="action-btn know-more-btn">Explore OTT</a>
+                <button type="button" class="action-btn quote-btn open-form-trigger">Partner With Us</button>
+            </div>
+        </div>
+    </section>
+    <section class="about-home-section" id="about">
+        <div class="section-inner about-home-content">
+            <div>
+                <p class="section-eyebrow">ABOUT NUMBER 10 SPORTS</p>
+                <h2>India's Most Connected Sports Ecosystem</h2>
+                <p class="section-text">Number 10 Sports brings streaming, venues, events, player development and commercial growth into one premium platform for sport.</p>
+                <p class="section-text">We build experiences for fans, operators and athletes with a premium-first approach that scales across cities, events and seasons.</p>
+                <ul class="about-home-highlights" aria-label="Core focus areas">
+                    <li>Streaming</li>
+                    <li>Infrastructure</li>
+                    <li>Events</li>
+                    <li>Academies</li>
+                    <li>Talent</li>
+                    <li>Growth</li>
+                </ul>
+                <a href="about.html" class="about-learn-btn">Learn More</a>
+            </div>
+            <div class="journey-preview-image">
+                <img src="images/football.jpg" alt="Premium sports production">
+            </div>
+        </div>
+    </section>
+    <section class="stats-section" id="impact">
+        <div class="section-inner">
+            <p class="section-eyebrow">OUR IMPACT</p>
+            <h2 class="section-title">Numbers that prove we move sport forward.</h2>
+            <div class="stats">
+                <div class="stat-box">
+                    <h3 class="stat-count" data-target="400000">0</h3>
+                    <p>Games produced across platforms.</p>
+                </div>
+                <div class="stat-box">
+                    <h3 class="stat-count" data-target="450000">0</h3>
+                    <p>Athletes featured in our programs.</p>
+                </div>
+                <div class="stat-box">
+                    <h3 class="stat-count" data-target="24">0</h3>
+                    <p>Markets and territories covered.</p>
+                </div>
+                <div class="stat-box">
+                    <h3 class="stat-count" data-target="100">0</h3>
+                    <p>Million viewers reached annually.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="production-section" id="production">
+        <div class="section-inner">
+            <p class="section-eyebrow">PRODUCTION</p>
+            <h2 class="section-title">How we bring sport to life</h2>
+            <div class="timeline-grid">
+                <div class="timeline-step">
+                    <h3>CAPTURE</h3>
+                    <p>Broadcast-quality capture and live crew deployment across venues.</p>
+                </div>
+                <div class="timeline-step">
+                    <h3>PRODUCE</h3>
+                    <p>Turn raw footage into premium live, highlights and social content.</p>
+                </div>
+                <div class="timeline-step">
+                    <h3>DISTRIBUTE</h3>
+                    <p>Publish to OTT, social, venues and partner platforms simultaneously.</p>
+                </div>
+                <div class="timeline-step">
+                    <h3>ANALYSE</h3>
+                    <p>Measure engagement, performance and commercial impact in real time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="play-section" id="play">
+        <div class="section-inner">
+            <p class="section-eyebrow">SPORTS PLAY</p>
+            <h2 class="section-title">Premium venues for performance and events.</h2>
+            <div class="play-grid">
+                <article class="play-card">
+                    <div class="play-card-content">
+                        <h3>Football Turf</h3>
+                        <p>High-performance fields built for league fixtures and community sport.</p>
+                    </div>
+                    <img src="images/football.jpg" alt="Football turf">
+                </article>
+                <article class="play-card">
+                    <div class="play-card-content">
+                        <h3>Cricket Facility</h3>
+                        <p>Broadcast-ready nets, pitches and academy-ready infrastructure.</p>
+                    </div>
+                    <img src="images/cricket.jpg" alt="Cricket facility">
+                </article>
+                <article class="play-card">
+                    <div class="play-card-content">
+                        <h3>Tennis Courts</h3>
+                        <p>Modern court spaces for coaching, matchplay and regional competitions.</p>
+                    </div>
+                    <img src="images/tennis.jpg" alt="Tennis court">
+                </article>
+                <article class="play-card">
+                    <div class="play-card-content">
+                        <h3>Badminton Arena</h3>
+                        <p>Indoor courts designed for fast-paced leagues and talent programmes.</p>
+                    </div>
+                    <img src="images/badminton.jpg" alt="Badminton arena">
+                </article>
+            </div>
+        </div>
+    </section>
+    <section class="live-section" id="events">
+        <div class="section-inner">
+            <p class="section-eyebrow">LIVE STREAMING</p>
+            <h2 class="section-title">Real sport, real momentum.</h2>
+            <div class="live-player-section">
+                <div class="live-player-frame">
+                    <a id="livePlayerLink" class="live-player-link" href="https://youtu.be/mpuR4DBtxWg?si=hjqZWdIU5yndDfB2" target="_blank" rel="noopener noreferrer">
+                        <div class="live-player-link-inner">
+                            <span>Watch this stream on YouTube</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="live-player-meta">
+                    <h3 id="livePlayerTitle">Now Playing: Mumbai Titans vs Pune Warriors</h3>
+                    <span>Live broadcast • click to open on YouTube</span>
+                </div>
+            </div>
+            <div class="events-grid">
+                <a class="event-card active" href="https://youtu.be/mpuR4DBtxWg?si=hjqZWdIU5yndDfB2" target="_blank" rel="noopener noreferrer" data-title="Mumbai Titans vs Pune Warriors">
+                    <span class="event-sport">Football</span>
+                    <div class="event-date">LIVE</div>
+                    <div class="event-title">Mumbai Titans vs Pune Warriors</div>
+                    <small>12.4K watching</small>
+                </a>
+                <a class="event-card" href="https://youtu.be/mpuR4DBtxWg?si=hjqZWdIU5yndDfB2" target="_blank" rel="noopener noreferrer" data-title="Delhi Blasters vs Chennai Strikers">
+                    <span class="event-sport">Cricket</span>
+                    <div class="event-date">LIVE</div>
+                    <div class="event-title">Delhi Blasters vs Chennai Strikers</div>
+                    <small>9.8K watching</small>
+                </a>
+                <a class="event-card" href="https://youtu.be/mpuR4DBtxWg?si=hjqZWdIU5yndDfB2" target="_blank" rel="noopener noreferrer" data-title="Bengaluru Rockets vs Hyderabad Waves">
+                    <span class="event-sport">Badminton</span>
+                    <div class="event-date">LIVE</div>
+                    <div class="event-title">Bengaluru Rockets vs Hyderabad Waves</div>
+                    <small>3.7K watching</small>
+                </a>
+                <a class="event-card" href="https://youtu.be/mpuR4DBtxWg?si=hjqZWdIU5yndDfB2" target="_blank" rel="noopener noreferrer" data-title="Kolkata Kings vs Ahmedabad Aces">
+                    <span class="event-sport">Football</span>
+                    <div class="event-date">LIVE</div>
+                    <div class="event-title">Kolkata Kings vs Ahmedabad Aces</div>
+                    <small>8.9K watching</small>
+                </a>
+                <a class="event-card" href="https://youtu.be/mpuR4DBtxWg?si=hjqZWdIU5yndDfB2" target="_blank" rel="noopener noreferrer" data-title="Goa Gladiators vs Jaipur Jets">
+                    <span class="event-sport">Cricket</span>
+                    <div class="event-date">LIVE</div>
+                    <div class="event-title">Goa Gladiators vs Jaipur Jets</div>
+                    <small>5.4K watching</small>
+                </a>
+                <a class="event-card" href="https://youtu.be/mpuR4DBtxWg?si=hjqZWdIU5yndDfB2" target="_blank" rel="noopener noreferrer" data-title="Chennai Falcons vs Delhi Strikers">
+                    <span class="event-sport">Football</span>
+                    <div class="event-date">LIVE</div>
+                    <div class="event-title">Chennai Falcons vs Delhi Strikers</div>
+                    <small>7.2K watching</small>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="cta-section" id="partner">
+        <div class="section-inner">
+            <div class="cta-panel">
+                <h2>Let's Build India's Sports Future Together</h2>
+                <p>Partner with us to create the next generation of sports content, venues and athlete experiences.</p>
+                <div class="hero-buttons">
+                    <a href="#ecosystem" class="hero-cta hero-cta-primary">Explore Ecosystem</a>
+                    <button type="button" class="hero-cta hero-cta-secondary open-form-trigger">Partner With Us</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="footer-content">
+        <div class="footer-top">
+            <div class="footer-section">
+                <div class="footer-logo">Number 10</div>
+                <p style="color: rgba(255,255,255,0.74); font-size: 0.95rem; margin-bottom: 18px; max-width: 320px;">A premium sports ecosystem for streaming, live events, infrastructure and athlete growth.</p>
+                <div class="social-links">
+                    <a class="instagram" href="https://www.instagram.com/number10sports?igsh=MXVuZGhmeGRqczFxNw==" title="Instagram" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.icons8.com/?size=100&id=BrU2BBoRXiWq&format=png&color=000000" alt="Instagram icon">
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/share/17Ns72F6bM/?mibextid=wwXIfr" title="Facebook" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.icons8.com/?size=100&id=z657ovoGgS2o&format=png&color=000000" alt="Facebook icon">
+                    </a>
+                    <a class="linkedin" href="https://www.linkedin.com/company/number10sports/" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.icons8.com/?size=100&id=xuvGCOXi8Wyg&format=png&color=000000" alt="LinkedIn icon">
+                    </a>
+                    <a class="youtube" href="https://youtube.com/@no.10sports?si=Qf1yo4suuLeVxqrV" title="YouTube" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.icons8.com/?size=100&id=omVNNE6wkyP7&format=png&color=000000" alt="YouTube icon">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>PRODUCTS</h4>
+                <ul>
+                    <li><a href="#ecosystem">Production Suite</a></li>
+                    <li><a href="#impact">Live Streaming</a></li>
+                    <li><a href="#production">Analytics</a></li>
+                    <li><a href="#play">Community Play</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>COMPANY</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#partner">Partner</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>RESOURCES</h4>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Guides</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="copyright">© 2024 Number 10 Sports. All rights reserved.</div>
+        </div>
+    </div>
+</footer>
+<div class="popup" id="popupForm">
+    <div class="popup-content">
+        <h2>Partner With Us</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell us about your inquiry..." required></textarea>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" class="submit-btn">Send Message</button>
+                <button type="button" class="close-btn" id="closeFormBtn">Close</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="journey-modal" id="journeyModal" aria-hidden="true">
+    <div class="modal-content">
+        <button class="close-btn" id="closeJourney" aria-label="Close">Close</button>
+        <h3 id="journeyModalTitle">Title</h3>
+        <p id="journeyModalBody">Description</p>
+    </div>
+</div>
+<script src="ott-config.js"></script>
+<script>
+const navbar = document.querySelector('.navbar');
+const heroSection = document.querySelector('.hero');
+let scrollTimeout;
+function updateNavbarTheme() {
+    if (!navbar || !heroSection) return;
+    const switchPoint = navbar.offsetHeight + 20;
+    navbar.classList.toggle('scrolled', heroSection.getBoundingClientRect().bottom <= switchPoint);
+}
+window.addEventListener('scroll', () => {
+    navbar.classList.add('visible');
+    updateNavbarTheme();
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        navbar.classList.remove('visible');
+    }, 2000);
+}, { passive: true });
+window.addEventListener('resize', updateNavbarTheme);
+navbar.classList.add('visible');
+updateNavbarTheme();
+scrollTimeout = setTimeout(() => { navbar.classList.remove('visible'); }, 3000);
+const heroVideo = document.querySelector('.hero video');
+const reduceHeroMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let heroScrollTicking = false;
+function updateHeroVideoScroll() {
+    heroScrollTicking = false;
+    if (!heroSection || !heroVideo || reduceHeroMotion.matches) return;
+    const heroHeight = heroSection.offsetHeight || window.innerHeight;
+    const heroTop = heroSection.getBoundingClientRect().top;
+    const scrollProgress = Math.min(Math.max(-heroTop / heroHeight, 0), 1);
+    const lift = scrollProgress * heroHeight * 0.2;
+    const scale = 1.02 + scrollProgress * 0.03;
+    heroVideo.style.transform = `translate3d(0, -${lift}px, 0) scale(${scale})`;
+}
+function requestHeroVideoScrollUpdate() {
+    if (!heroScrollTicking) {
+        window.requestAnimationFrame(updateHeroVideoScroll);
+        heroScrollTicking = true;
+    }
+}
+function handleHeroMotionPreferenceChange() {
+    if (!heroVideo) return;
+    if (reduceHeroMotion.matches) {
+        heroVideo.style.transform = 'none';
+        return;
+    }
+    requestHeroVideoScrollUpdate();
+}
+window.addEventListener('scroll', requestHeroVideoScrollUpdate, { passive: true });
+window.addEventListener('resize', requestHeroVideoScrollUpdate);
+if (reduceHeroMotion.addEventListener) {
+    reduceHeroMotion.addEventListener('change', handleHeroMotionPreferenceChange);
+} else {
+    reduceHeroMotion.addListener(handleHeroMotionPreferenceChange);
+}
+handleHeroMotionPreferenceChange();
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+document.querySelectorAll('.card, .stat-box, .play-card, .event-card, .timeline-step').forEach(el => observer.observe(el));
+document.querySelectorAll('section h2').forEach(el => observer.observe(el));
+function animateStats() {
+    const statElements = document.querySelectorAll('.stat-count');
+    statElements.forEach(element => {
+        if (element.classList.contains('animated')) return;
+        const target = parseInt(element.getAttribute('data-target')) || 0;
+        let current = 0;
+        const increment = target / 60;
+        const duration = 2000;
+        const stepTime = duration / 60;
+        const counter = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(counter);
+                element.classList.add('animated');
+            }
+            let displayText;
+            if (target >= 100000) {
+                displayText = Math.floor(current).toLocaleString() + '+';
+            } else if (target === 100) {
+                displayText = Math.floor(current) + 'M+';
+            } else {
+                displayText = Math.floor(current) + '+';
+            }
+            element.textContent = displayText;
+        }, stepTime);
+    });
+}
+const statsSection = document.querySelector('.stats-section');
+if (statsSection) {
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateStats();
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    });
+    statsObserver.observe(statsSection);
+}
+const heroTyping = document.getElementById('heroTyping');
+function typeHeroHeadline() {
+    if (!heroTyping) return;
+    const text = "INDIA'S INTEGRATED SPORTS ECOSYSTEM";
+    heroTyping.innerHTML = '';
+    heroTyping.classList.add('typing-cursor');
+    let index = 0;
+    const interval = setInterval(() => {
+        if (index >= text.length) {
+            clearInterval(interval);
+            heroTyping.classList.remove('typing-cursor');
+            return;
+        }
+        heroTyping.textContent += text[index];
+        index += 1;
+    }, 90);
+}
+typeHeroHeadline();
+function openForm() {
+    const popup = document.getElementById('popupForm');
+    if (popup) popup.classList.add('active');
+}
+function closeForm() {
+    const popup = document.getElementById('popupForm');
+    if (popup) popup.classList.remove('active');
+}
+document.querySelectorAll('.open-form-trigger').forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        openForm();
+    });
+});
+const closeFormBtn = document.getElementById('closeFormBtn');
+if (closeFormBtn) closeFormBtn.addEventListener('click', closeForm);
+document.getElementById('popupForm')?.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) closeForm();
+});
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert("Thank you for your message! We'll get back to you soon.");
+    this.reset();
+    closeForm();
+});
+const journeyData = {
+    watch: {
+        title: 'WATCH',
+        body: 'Live streaming, highlights, sports media production, OTT distribution and fan engagement.'
+    },
+    listen: {
+        title: 'LISTEN',
+        body: 'YouthX podcasts, athlete stories, sports entrepreneurship and audio content.'
+    },
+    play: {
+        title: 'PLAY',
+        body: 'Community play, leagues, casual sports and pick-up events that drive participation.'
+    },
+    compete: {
+        title: 'COMPETE',
+        body: 'Tournaments, leagues and competitive pathways for athletes and teams.'
+    },
+    build: {
+        title: 'BUILD',
+        body: 'Infrastructure, stadium delivery, operations and venue services.'
+    },
+    grow: {
+        title: 'GROW',
+        body: 'Commercial growth, franchise services and long-term ecosystem scaling.'
+    }
+};
+const journeyModal = document.getElementById('journeyModal');
+const journeyModalTitle = document.getElementById('journeyModalTitle');
+const journeyModalBody = document.getElementById('journeyModalBody');
+const closeJourney = document.getElementById('closeJourney');
+function openJourney(key) {
+    const data = journeyData[key];
+    if (!data) return;
+    journeyModalTitle.textContent = data.title;
+    journeyModalBody.textContent = data.body;
+    journeyModal.classList.add('active');
+    journeyModal.setAttribute('aria-hidden', 'false');
+}
+function closeJourneyModal() {
+    journeyModal.classList.remove('active');
+    journeyModal.setAttribute('aria-hidden', 'true');
+}
+document.querySelectorAll('.journey-item').forEach(el => {
+    el.addEventListener('click', () => {
+        document.querySelectorAll('.journey-item').forEach(item => item.classList.remove('active'));
+        el.classList.add('active');
+        const key = el.getAttribute('data-key');
+        const data = journeyData[key];
+        if (data) {
+            document.getElementById('journeyPreviewTitle').textContent = data.title;
+            document.getElementById('journeyPreviewText').textContent = data.body;
+        }
+    });
+});
+if (closeJourney) {
+    closeJourney.addEventListener('click', closeJourneyModal);
+    journeyModal?.addEventListener('click', (e) => { if (e.target === journeyModal) closeJourneyModal(); });
+}
+const livePlayerLink = document.getElementById('livePlayerLink');
+const livePlayerTitle = document.getElementById('livePlayerTitle');
+const streamCards = Array.from(document.querySelectorAll('.event-card'));
+const YOUTUBE_VIDEO_URL = 'https://youtu.be/mpuR4DBtxWg?si=hjqZWdIU5yndDfB2';
+function setLiveStream(index) {
+    if (!livePlayerLink || !streamCards.length) return;
+    const selectedCard = streamCards[index];
+    const title = selectedCard.getAttribute('data-title') || 'Live Stream';
+    livePlayerLink.href = YOUTUBE_VIDEO_URL;
+    if (livePlayerTitle) {
+        livePlayerTitle.textContent = `Now Playing: ${title}`;
+    }
+    streamCards.forEach(card => card.classList.remove('active'));
+    selectedCard.classList.add('active');
+}
+streamCards.forEach((card, index) => {
+    card.addEventListener('click', function(event) {
+        if (card.href.includes('youtube.com')) {
+            return;
+        }
+        event.preventDefault();
+        setLiveStream(index);
+        document.getElementById('events').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+if (livePlayerLink) {
+    try {
+        livePlayerLink.href = YOUTUBE_VIDEO_URL;
+        if (livePlayerTitle) livePlayerTitle.textContent = 'Now Playing: Live Stream';
+    } catch (e) {
+        console.error('Failed to initialize live player link', e);
+    }
+}
+</script>
+</body>
+</html>

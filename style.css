@@ -1,0 +1,203 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND VIDEO */
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* DARK OVERLAY */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: transparent;
+}
+
+.logo {
+    height: 50px;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* HERO */
+.hero {
+    height: 90vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 50px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    max-width: 800px;
+}
+
+.hero span {
+    color: red;
+}
+
+.hero p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* BUTTONS */
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 25px;
+    margin-right: 15px;
+    background: red;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+button.secondary {
+    background: white;
+    color: black;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 8px 20px;
+    }
+    
+    .logo {
+        height: 60px;
+    }
+    
+    .nav-links {
+        gap: 10px;
+    }
+    
+    .nav-links a {
+        font-size: 14px;
+    }
+    
+    .hero {
+        padding: 0 20px;
+        text-align: center;
+        height: 80vh;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+        max-width: 100%;
+    }
+    
+    .hero h2 {
+        font-size: 20px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .buttons {
+        justify-content: center;
+    }
+    
+    .about-home-section,
+    .stats-section,
+    .production-section,
+    .play-section,
+    .events-section {
+        padding: 40px 20px;
+    }
+    
+    .card-grid,
+    .play-grid,
+    .production-grid,
+    .events-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 8px 15px;
+    }
+    
+    .logo {
+        height: 50px;
+    }
+    
+    .nav-links a {
+        font-size: 12px;
+    }
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .hero h2 {
+        font-size: 18px;
+    }
+    
+    .hero p {
+        font-size: 14px;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .buttons button {
+        width: 100%;
+        max-width: 250px;
+        margin: 5px 0;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}

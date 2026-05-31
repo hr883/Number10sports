@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Number 10 Sports</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Jost', sans-serif;
+    background: #f6f6f6;
+    color: #111;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.page-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 50px;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.page-nav.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.page-nav.scrolled {
+    background: rgba(255, 255, 255, 0.42);
+    border-bottom-color: rgba(0, 0, 0, 0.04);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+}
+
+.logo {
+    height: 78px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+}
+
+.page-nav.scrolled .nav-links a {
+    color: #171717;
+}
+
+.nav-links a:hover {
+    color: #D52B1E;
+}
+
+.page-nav.scrolled .nav-links a.cta {
+    color: #ffffff;
+    background: #BF2506;
+}
+
+.cta {
+    background: #BF2506;
+    padding: 12px 26px;
+    border-radius: 999px;
+    box-shadow: 0 0 0 rgba(191, 37, 6, 0);
+    animation: navCtaGlow 1.35s ease-in-out infinite;
+    transition: color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cta:hover,
+.cta:focus-visible {
+    color: #ffffff;
+    background: #a91f05;
+    box-shadow: 0 0 24px rgba(255, 255, 255, 0.52), 0 0 38px rgba(191, 37, 6, 0.5);
+}
+
+.cta:active {
+    color: #BF2506;
+    background: #ffffff;
+}
+
+.live-cta {
+    color: #ffffff;
+    background: #BF2506;
+    animation: liveButtonFlicker 1s infinite;
+}
+
+.page-nav.scrolled .nav-links a.live-cta {
+    color: #ffffff;
+    background: #BF2506;
+}
+
+.live-cta:hover,
+.live-cta:focus-visible {
+    color: #ffffff;
+    background: #BF2506;
+    animation: liveButtonFlicker 1s infinite;
+}
+
+.live-cta:active {
+    color: #BF2506;
+    background: #ffffff;
+    animation: none;
+}
+
+@keyframes navCtaGlow {
+    0%,
+    100% {
+        box-shadow: 0 0 14px rgba(191, 37, 6, 0.42);
+    }
+
+    50% {
+        box-shadow: 0 0 18px rgba(255, 255, 255, 0.72), 0 0 32px rgba(191, 37, 6, 0.42);
+    }
+}
+
+@keyframes liveButtonFlicker {
+    0% {
+        color: #ffffff;
+        background: #BF2506;
+        box-shadow: 0 0 8px rgba(191, 37, 6, 0.65), 0 0 18px rgba(191, 37, 6, 0.45), 0 0 30px rgba(255, 0, 0, 0.28);
+        filter: brightness(1);
+    }
+
+    15% {
+        color: #ffffff;
+        background: #e33312;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 22px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.45);
+        filter: brightness(1.25);
+    }
+
+    24% {
+        color: #ffffff;
+        background: #a91f05;
+        box-shadow: 0 0 5px rgba(196, 0, 0, 0.45), 0 0 12px rgba(196, 0, 0, 0.3);
+        filter: brightness(0.9);
+    }
+
+    36% {
+        color: #ffffff;
+        background: #f04422;
+        box-shadow: 0 0 14px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.72), 0 0 48px rgba(255, 255, 255, 0.5);
+        filter: brightness(1.35);
+    }
+
+    48% {
+        color: #ffffff;
+        background: #BF2506;
+        box-shadow: 0 0 9px rgba(224, 0, 0, 0.6), 0 0 22px rgba(224, 0, 0, 0.4);
+        filter: brightness(1);
+    }
+
+    62% {
+        color: #ffffff;
+        background: #e33312;
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.95), 0 0 26px rgba(255, 255, 255, 0.75), 0 0 44px rgba(255, 255, 255, 0.48);
+        filter: brightness(1.22);
+    }
+
+    74% {
+        color: #ffffff;
+        background: #a91f05;
+        box-shadow: 0 0 7px rgba(209, 0, 0, 0.55), 0 0 16px rgba(209, 0, 0, 0.34);
+        filter: brightness(0.94);
+    }
+
+    86% {
+        color: #ffffff;
+        background: #f04422;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.92), 0 0 24px rgba(255, 255, 255, 0.68), 0 0 38px rgba(255, 255, 255, 0.4);
+        filter: brightness(1.28);
+    }
+
+    100% {
+        color: #ffffff;
+        background: #BF2506;
+        box-shadow: 0 0 12px rgba(191, 37, 6, 0.8), 0 0 26px rgba(191, 37, 6, 0.6), 0 0 42px rgba(255, 0, 0, 0.4);
+        filter: brightness(1);
+    }
+}
+
+main {
+    padding-top: 104px;
+}
+
+.wrap {
+    width: min(1120px, calc(100% - 72px));
+    margin: 0 auto;
+}
+
+.hero-about {
+    padding: 72px 0 42px;
+    background: #ffffff;
+}
+
+.hero-about .eyebrow {
+    color: #D52B1E;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.hero-about h1 {
+    font-size: clamp(42px, 4.25vw, 58px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin: 0;
+    max-width: 590px;
+    text-transform: uppercase;
+}
+
+.hero-about p {
+    margin-top: 22px;
+    max-width: 545px;
+    font-size: 15px;
+    color: #4f4f4f;
+}
+
+.about-pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+    list-style: none;
+}
+
+.about-pill-list li {
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: rgba(213, 43, 30, 0.08);
+    border: 1px solid rgba(213, 43, 30, 0.16);
+    color: #D52B1E;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.about-pill-list a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.about-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(360px, 0.86fr) minmax(540px, 1.14fr);
+    gap: 28px;
+    align-items: center;
+}
+
+.hero-copy {
+    max-width: 720px;
+}
+
+.hero-media {
+    position: relative;
+    min-height: 520px;
+    isolation: isolate;
+}
+
+.hero-media-grid {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 520px;
+    margin-left: 0;
+    filter: drop-shadow(0 28px 38px rgba(7, 17, 30, 0.24));
+}
+
+.hero-card {
+    position: absolute;
+    border-radius: 0;
+    overflow: hidden;
+    padding: 5px;
+    background: #ffffff;
+    box-shadow: none;
+    transform: translateZ(0);
+    z-index: 1;
+}
+
+.hero-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.05);
+    filter: saturate(1.06) contrast(1.18) brightness(0.88);
+}
+
+.hero-card::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    z-index: 1;
+    background:
+        radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.38), transparent 29%),
+        linear-gradient(135deg, rgba(213, 43, 30, 0.08), transparent 42%),
+        linear-gradient(180deg, rgba(6, 19, 34, 0.03), rgba(5, 8, 14, 0.42));
+    pointer-events: none;
+}
+
+.hero-card--top {
+    top: 0;
+    left: 12%;
+    width: 48%;
+    height: 248px;
+    border-radius: 0 0 0 20px;
+    clip-path: polygon(25% 0, 100% 0, 78% 100%, 0 100%);
+}
+
+.hero-card--top img {
+    object-position: 55% 38%;
+}
+
+.hero-card--right {
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 352px;
+    border-radius: 0 20px 0 0;
+    clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.hero-card--right img {
+    object-position: 55% 45%;
+}
+
+.hero-card--bottom {
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    height: 282px;
+    border-radius: 20px 0 0 20px;
+    clip-path: polygon(20% 0, 100% 0, 75% 100%, 0 100%, 0 26%);
+}
+
+.hero-card--bottom img {
+    object-position: 52% 40%;
+}
+
+.hero-card--bottom-right {
+    right: 0;
+    bottom: 0;
+    width: 61%;
+    height: 198px;
+    border-radius: 0 0 20px 0;
+    clip-path: polygon(17% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.hero-card--bottom-right img {
+    object-position: 55% 45%;
+}
+
+.hero-logo-card {
+    position: absolute;
+    top: 46%;
+    left: 52.5%;
+    width: 172px;
+    height: 172px;
+    transform: translate(-50%, -50%);
+    border-radius: 18px;
+    background: linear-gradient(160deg, #b70f08 0%, #d02015 54%, #970e08 100%);
+    border: 7px solid #ffffff;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 22px 38px rgba(7, 17, 30, 0.34);
+    z-index: 3;
+}
+
+.hero-logo-card img {
+    width: 138px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 48px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: #111;
+}
+
+.section-title::before,
+.section-title::after {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 1px;
+    background: rgba(17, 17, 17, 0.12);
+}
+
+.section-title strong {
+    font-size: 13px;
+    font-weight: 900;
+    color: #D52B1E;
+}
+
+.journey-section {
+    padding: 22px 0 34px;
+}
+
+.journey-section .section-title {
+    margin-bottom: 24px;
+}
+
+.journey-section .section-title::before,
+.journey-section .section-title::after {
+    width: 44px;
+    background: #D52B1E;
+}
+
+.journey-section .section-title strong {
+    color: #111;
+    font-size: 22px;
+    letter-spacing: 0.03em;
+}
+
+.journey-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 48px;
+    align-items: start;
+    margin-bottom: 26px;
+}
+
+.journey-card {
+    position: relative;
+    min-width: 0;
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    transition: transform 0.22s ease;
+}
+
+.journey-card:hover,
+.journey-card:focus-visible {
+    transform: translateY(-3px);
+}
+
+.journey-card:focus-visible {
+    outline: 2px solid rgba(213, 43, 30, 0.55);
+    outline-offset: 8px;
+}
+
+.journey-card:hover .journey-icon,
+.journey-card:focus-visible .journey-icon {
+    transform: scale(1.06);
+}
+
+.journey-card:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    top: 24px;
+    right: -34px;
+    color: #111;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.journey-icon {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 14px;
+    color: #D52B1E;
+    transition: transform 0.22s ease;
+}
+
+.journey-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: currentColor;
+}
+
+.journey-card h3 {
+    margin: 0 0 7px;
+    font-size: 13px;
+    line-height: 1.1;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.journey-card p {
+    margin: 0 auto;
+    max-width: 126px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.55;
+}
+
+.journey-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(17, 17, 17, 0.48);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.24s ease, visibility 0.24s ease;
+}
+
+.journey-modal-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.journey-modal {
+    position: relative;
+    width: min(620px, 100%);
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 38px 38px 34px;
+    box-shadow: 0 26px 80px rgba(17, 17, 17, 0.28);
+    transform: translateY(14px) scale(0.98);
+    transition: transform 0.24s ease;
+}
+
+.journey-modal-overlay.is-open .journey-modal {
+    transform: translateY(0) scale(1);
+}
+
+.journey-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(17, 17, 17, 0.06);
+    color: #111;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.journey-modal-close:hover,
+.journey-modal-close:focus-visible {
+    background: #D52B1E;
+    color: #ffffff;
+}
+
+.journey-modal h2 {
+    margin: 0 48px 18px 0;
+    font-size: 30px;
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.journey-modal p {
+    margin: 0 0 16px;
+    color: #424242;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.journey-modal p:last-child {
+    margin-bottom: 0;
+}
+
+.why-section {
+    display: grid;
+    grid-template-columns: 0.92fr 1.25fr;
+    gap: 34px;
+    align-items: end;
+    margin-bottom: 84px;
+}
+
+.why-stadium {
+    width: 100%;
+    aspect-ratio: 1.52 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 12px 24px rgba(17, 17, 17, 0.14);
+}
+
+.why-content .section-title {
+    margin-bottom: 22px;
+}
+
+.why-content .section-title::before,
+.why-content .section-title::after {
+    display: none;
+}
+
+.why-content .section-title strong {
+    color: #111;
+    font-size: 25px;
+    letter-spacing: 0.03em;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+}
+
+.why-card {
+    min-height: 258px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 34px 25px 28px;
+    border: 1px solid rgba(17, 17, 17, 0.10);
+    box-shadow: 0 10px 22px rgba(17, 17, 17, 0.10);
+    text-align: center;
+}
+
+.why-card .why-icon {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 20px;
+    color: #D52B1E;
+}
+
+.why-card .why-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: currentColor;
+}
+
+.why-card h3 {
+    margin: 0 0 14px;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.why-card p {
+    margin: 0;
+    color: #222;
+    line-height: 1.65;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ecosystem-section {
+    padding: 80px 0 0;
+}
+
+.ecosystem-wrap {
+    display: grid;
+    grid-template-columns: 1fr minmax(320px, 460px);
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 84px;
+}
+
+.ecosystem-copy h2 {
+    margin: 0 0 18px;
+    font-size: 38px;
+    line-height: 1.05;
+}
+
+.ecosystem-copy p {
+    margin: 0;
+    color: #515151;
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 530px;
+}
+
+.ecosystem-circle {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    display: grid;
+    place-items: center;
+}
+
+.ecosystem-center {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: #D52B1E;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    text-align: center;
+    box-shadow: 0 28px 70px rgba(213, 43, 30, 0.22);
+}
+
+.ecosystem-center h3 {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: 0.1em;
+}
+
+.ecosystem-center p {
+    margin: 10px 0 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    opacity: 0.85;
+}
+
+.ecosystem-item {
+    position: absolute;
+    width: 180px;
+    padding: 18px 20px;
+    border-radius: 24px;
+    background: #ffffff;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    box-shadow: 0 18px 42px rgba(17, 17, 17, 0.08);
+    text-align: left;
+}
+
+.eco-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    background: rgba(213, 43, 30, 0.12);
+    display: grid;
+    place-items: center;
+    color: #D52B1E;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.eco-label {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.eco-copy {
+    margin: 0;
+    color: #5f5f5f;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.ecosystem-item:nth-child(1) { top: 16%; left: 50%; transform: translateX(-50%); }
+.ecosystem-item:nth-child(2) { top: 30%; right: -10%; }
+.ecosystem-item:nth-child(3) { top: 58%; right: -12%; }
+.ecosystem-item:nth-child(4) { top: 78%; left: 58%; transform: translateX(-50%); }
+.ecosystem-item:nth-child(5) { top: 78%; left: 12%; }
+.ecosystem-item:nth-child(6) { top: 58%; left: -10%; }
+.ecosystem-item:nth-child(7) { top: 30%; left: -10%; }
+.ecosystem-item:nth-child(8) { top: 14%; left: 18%; }
+
+.verticals-section {
+    padding: 0 0 72px;
+}
+
+.verticals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: 22px;
+    margin-bottom: 84px;
+}
+
+.vision-section,
+.mission-section {
+    margin: 64px auto;
+}
+
+.statement-panel {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 38px;
+    border: 1px solid rgba(17,17,17,0.06);
+    box-shadow: 0 18px 42px rgba(17,17,17,0.06);
+    text-align: center;
+}
+
+.statement-panel h3 {
+    font-size: 26px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.statement-panel p {
+    max-width: 820px;
+    margin: 0 auto;
+    color: #555;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.goals-section { margin: 64px auto 48px; }
+.goals-list { max-width: 920px; margin: 0 auto; color: #333; line-height:1.8; }
+
+.partner-section { margin: 48px auto 64px; }
+.partner-grid { display:grid; grid-template-columns: repeat(5, 1fr); gap:18px; }
+.partner-card { background:#fff; border-radius:16px; padding:20px; text-align:center; border:1px solid rgba(17,17,17,0.06); }
+
+.cta-section { background: linear-gradient(180deg,#fff 0%, #fafafa 100%); padding: 64px 0; text-align:center; }
+.cta-section h2 { font-size: 36px; margin-bottom: 18px; }
+.cta-buttons { display:inline-flex; gap:18px; margin-top:18px; }
+.btn-primary { background:#D52B1E; color:#fff; padding:16px 28px; border-radius:999px; text-decoration:none; font-weight:800; }
+.btn-secondary { background:#fff; color:#D52B1E; padding:16px 28px; border-radius:999px; border:1px solid rgba(17,17,17,0.06); text-decoration:none; font-weight:800; }
+
+.vertical-card {
+    position: relative;
+    min-height: 220px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #111;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 24px 60px rgba(17, 17, 17, 0.25);
+    scroll-margin-top: 128px;
+}
+
+.vertical-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.7));
+}
+
+.vertical-card-content {
+    position: relative;
+    z-index: 2;
+}
+
+.vertical-card .vertical-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.12);
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    margin-bottom: 18px;
+    font-size: 20px;
+}
+
+.vertical-card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.vertical-card p {
+    margin: 0;
+    font-size: 14px;
+    color: #eeeeee;
+    line-height: 1.7;
+}
+
+.stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(160px, 1fr));
+    gap: 18px;
+    padding: 42px 0 72px;
+}
+
+.stats-card {
+    background: #111;
+    color: #ffffff;
+    border-radius: 28px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 28px 60px rgba(17, 17, 17, 0.2);
+}
+
+.stats-card strong {
+    display: block;
+    font-size: 48px;
+    margin-bottom: 18px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.stats-card p {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.8;
+}
+
+.impact-strip { background:#0d0d0d; padding:48px 0; }
+.impact-strip .stats-strip { padding: 0; max-width: 1100px; margin: 0 auto; }
+.impact-strip .stats-card { background: transparent; border-radius: 14px; box-shadow: none; border: 1px solid rgba(255,255,255,0.04); padding: 28px; }
+
+section[id],
+.vertical-card[id] {
+    scroll-margin-top: 128px;
+}
+
+
+footer {
+    padding: 24px 0 40px;
+    text-align: center;
+    color: #6b6b6b;
+    font-size: 14px;
+}
+
+@media (max-width: 1100px) {
+    .about-hero-grid { gap: 28px; grid-template-columns: minmax(320px, 0.9fr) minmax(500px, 1.1fr); }
+    .ecosystem-wrap { grid-template-columns: 1fr; }
+    .ecosystem-section { padding-top: 40px; }
+    .hero-media { min-height: 500px; }
+    .hero-media-grid { min-height: 500px; width: 100%; margin-left: 0; }
+    .hero-card--top { height: 238px; }
+    .hero-card--right { height: 338px; }
+    .hero-card--bottom { height: 270px; }
+    .hero-card--bottom-right { height: 190px; }
+    .hero-logo-card { width: 160px; height: 160px; }
+    .hero-logo-card img { width: 128px; }
+}
+
+@media (max-width: 960px) {
+    .nav-links { gap: 14px; }
+    .page-nav { padding: 8px 30px; }
+    .hero-about { padding: 72px 0 42px; }
+    .about-hero-grid { grid-template-columns: 1fr; }
+    .hero-about h1 { font-size: 48px; }
+    .hero-copy p { font-size: 16px; }
+    .hero-media { min-height: 540px; }
+    .hero-media-grid { min-height: 540px; max-width: 680px; width: 100%; margin: 0 auto; }
+    .hero-card--top { height: 258px; }
+    .hero-card--right { height: 364px; }
+    .hero-card--bottom { height: 286px; }
+    .hero-card--bottom-right { height: 198px; }
+    .hero-logo-card { width: 146px; height: 146px; }
+    .hero-logo-card img { width: 116px; }
+    .journey-grid { grid-template-columns: repeat(3, 1fr); row-gap: 34px; }
+    .journey-card:not(:last-child)::after { display: none; }
+    .why-section { grid-template-columns: 1fr; align-items: start; }
+    .why-grid { grid-template-columns: repeat(3, 1fr); }
+    .verticals-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)); }
+    .partner-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)); }
+    .stats-strip { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 680px) {
+    .page-nav { padding: 15px 20px; flex-direction: column; gap: 10px; }
+    .nav-links { justify-content: center; }
+    .hero-about h1 { font-size: 36px; }
+    .hero-copy p { font-size: 15px; }
+    .journey-grid { grid-template-columns: 1fr; row-gap: 26px; }
+    .journey-modal-overlay { padding: 18px; }
+    .journey-modal { border-radius: 18px; padding: 32px 24px 28px; }
+    .journey-modal h2 { font-size: 26px; }
+    .journey-modal p { font-size: 15px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .verticals-grid { grid-template-columns: 1fr; }
+    .partner-grid { grid-template-columns: 1fr; }
+    .cta-buttons { display: flex; flex-direction: column; align-items: stretch; }
+    .stats-strip { grid-template-columns: 1fr; }
+    .hero-media { min-height: 420px; }
+    .hero-media-grid { min-height: 420px; }
+    .hero-card { padding: 4px; }
+    .hero-card::before { inset: 4px; }
+    .hero-card--top { height: 196px; }
+    .hero-card--right { height: 274px; }
+    .hero-card--bottom { height: 234px; }
+    .hero-card--bottom-right { height: 172px; }
+    .hero-logo-card { width: 140px; height: 140px; border-width: 6px; border-radius: 16px; }
+    .hero-logo-card img { width: 112px; }
+    .eco-icon { margin-bottom: 10px; }
+    .ecosystem-item { width: calc(100% - 36px); left: 50% !important; transform: translateX(-50%) !important; top: auto !important; right: auto !important; bottom: auto !important; position: relative; }
+    .ecosystem-center { margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+<nav class="page-nav">
+    <a href="./index.html" aria-label="Number 10 Sports home">
+        <img src="./logo.png" class="logo" alt="Number 10 Sports">
+    </a>
+    <div class="nav-links">
+        <a href="./index.html">HOME</a>
+        <a href="https://www.youtube.com/channel/UCukAILqGMhfmyC64o9SNtwg" class="cta live-cta" target="_blank" rel="noopener noreferrer">LIVE</a>
+        <a href="./about.html">ABOUT</a>
+        <a href="#ecosystem">PLATFORM</a>
+        <a href="#contact">CONTACT</a>
+        <a href="#contact" class="cta">GET IN TOUCH</a>
+    </div>
+</nav>
+<main>
+    <section id="about" class="hero-about">
+        <div class="wrap about-hero-grid">
+            <div class="hero-copy">
+                <p class="eyebrow">ABOUT NUMBER 10 SPORTS</p>
+                <h1>INDIA'S INTEGRATED SPORTS ECOSYSTEM</h1>
+                <p class="lead">Number 10 Sports is an integrated sports ecosystem company with a clear and ambitious vision: to transform how Indians engage with sports — from watching and listening to playing, learning, competing, and building lifelong connections with sport.</p>
+                <p class="lead">We bring together sports media, live streaming, infrastructure development, academies, events, experiences, stadium operations, and franchise management into one connected ecosystem designed for participants, partners, sponsors, communities, and investors.</p>
+                <ul class="about-pill-list" aria-label="Number 10 Sports focus areas">
+                    <li><a href="#ott-platform">WATCH</a></li>
+                    <li><a href="#academies-coaching">PLAY</a></li>
+                    <li><a href="#youthx">LEARN</a></li>
+                    <li><a href="#infrastructure-development">BUILD</a></li>
+                    <li><a href="#experiences">CONNECT</a></li>
+                </ul>
+            </div>
+            <div class="hero-media">
+                <div class="hero-media-grid">
+                    <div class="hero-card hero-card--top">
+                        <img src="./images/cricket.jpg" alt="Cricket player in action">
+                    </div>
+                    <div class="hero-card hero-card--right">
+                        <img src="./images/football.jpg" alt="Football player in action">
+                    </div>
+                    <div class="hero-card hero-card--bottom">
+                        <img src="./images/badminton.jpg" alt="Female badminton player in action">
+                    </div>
+                    <div class="hero-card hero-card--bottom-right">
+                        <img src="./images/tennis.jpg" alt="Tennis player in action">
+                    </div>
+                    <div class="hero-logo-card">
+                        <img src="./logo.png" alt="Number 10 Sports">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="journey" class="wrap journey-section">
+        <div class="section-title"><strong>THE SPORTS JOURNEY WE ENABLE</strong></div>
+        <div class="journey-grid">
+            <button type="button" class="journey-card" data-journey="watch" aria-haspopup="dialog">
+                <div class="journey-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 11h44a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H36v5h10v5H18v-5h10v-5H10a4 4 0 0 1-4-4V15a4 4 0 0 1 4-4Zm3 7v23h38V18H13Zm18 5 13 8-13 8V23Z"/></svg></div>
+                <h3>WATCH</h3>
+                <p>Live streams, highlights and digital content</p>
+            </button>
+            <button type="button" class="journey-card" data-journey="listen" aria-haspopup="dialog">
+                <div class="journey-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M25 9a7 7 0 0 1 14 0v22a7 7 0 0 1-14 0V9Zm-6 12h4v10a9 9 0 0 0 18 0V21h4v10c0 6.5-4.6 12-11 13.2V52h9v5H21v-5h9v-7.8A13.5 13.5 0 0 1 19 31V21Zm10-10h6v4h-6v-4Zm0 8h6v4h-6v-4Zm0 8h6v4h-6v-4Z"/></svg></div>
+                <h3>LISTEN</h3>
+                <p>Podcasts, stories and sports conversations</p>
+            </button>
+            <button type="button" class="journey-card" data-journey="play" aria-haspopup="dialog">
+                <div class="journey-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M34 8a6 6 0 1 1-12 0 6 6 0 0 1 12 0Zm-4 12 8 7 10-2 2 6-13 3-6-5-4 9 9 7-3 13-7-1 2-9-10-8 7-18-8 3-5 8-6-3 7-11 13-5 4 6Zm22 19a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg></div>
+                <h3>PLAY</h3>
+                <p>Academies, coaching and training programs</p>
+            </button>
+            <button type="button" class="journey-card" data-journey="compete" aria-haspopup="dialog">
+                <div class="journey-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 10h28v6h10v7c0 9-6 16-15 17-2 3-4 5-7 6v6h10v6H20v-6h10v-6c-3-1-5-3-7-6-9-1-15-8-15-17v-7h10v-6Zm6 6v15a8 8 0 0 0 16 0V16H24Zm22 6v10c3-1 5-5 5-9v-1h-5Zm-33 0v1c0 4 2 8 5 9V22h-5Zm19 1 3 5 5 1-4 4 1 6-5-3-5 3 1-6-4-4 5-1 3-5Z"/></svg></div>
+                <h3>COMPETE</h3>
+                <p>Tournaments, leagues and events</p>
+            </button>
+            <button type="button" class="journey-card" data-journey="build" aria-haspopup="dialog">
+                <div class="journey-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M13 27c0-10 38-10 38 0v10c0 10-38 10-38 0V27Zm6 0c0 3 26 3 26 0s-26-3-26 0Zm0 8v2c0 3 26 3 26 0v-2c-8 4-18 4-26 0Zm4 10h6v8h-6v-8Zm12 0h6v8h-6v-8ZM19 17h5v6h-5v-6Zm21 0h5v6h-5v-6Zm-10-7h5v9h-5v-9Z"/></svg></div>
+                <h3>BUILD</h3>
+                <p>Infrastructure, facilities and venues</p>
+            </button>
+            <button type="button" class="journey-card" data-journey="grow" aria-haspopup="dialog">
+                <div class="journey-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 51h8V35H9v16Zm13 0h8V27h-8v24Zm13 0h8V20h-8v31Zm13 0h8V12h-8v39ZM42 10h14v14h-6v-5L34 35l-8-8L13 40l-4-4 17-17 8 8 12-12h-4v-5Z"/></svg></div>
+                <h3>GROW</h3>
+                <p>Teams, franchises and professional pathways</p>
+            </button>
+        </div>
+    </section>
+    <section class="wrap why-section">
+        <div class="why-image">
+            <img class="why-stadium" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1400&q=82" alt="Stadium crowd">
+        </div>
+        <div class="why-content">
+            <div class="section-title"><strong>WHY NUMBER 10 SPORTS?</strong></div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 28a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm-18 4a7 7 0 1 0 0-14 7 7 0 0 0 0 14Zm36 0a7 7 0 1 0 0-14 7 7 0 0 0 0 14ZM32 33c-10 0-17 5-17 12v6h34v-6c0-7-7-12-17-12ZM14 36C6 36 2 40 2 46v5h10v-6c0-4 2-8 5-11-1 1-2 2-3 2Zm36 0c-1 0-2-1-3-2 3 3 5 7 5 11v6h10v-5c0-6-4-10-12-10Z"/></svg></div>
+                    <h3>SPORTS PARTICIPATION</h3>
+                    <p>Creating opportunities for every individual to play, learn and excel.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M13 27c0-10 38-10 38 0v10c0 10-38 10-38 0V27Zm6 0c0 3 26 3 26 0s-26-3-26 0Zm0 8v2c0 3 26 3 26 0v-2c-8 4-18 4-26 0Zm4 10h6v8h-6v-8Zm12 0h6v8h-6v-8ZM19 17h5v6h-5v-6Zm21 0h5v6h-5v-6Zm-10-7h5v9h-5v-9Z"/></svg></div>
+                    <h3>SPORTS INFRASTRUCTURE</h3>
+                    <p>Building world-class facilities that enable communities to grow.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8a9 9 0 0 0-9 9c0 8 9 17 9 17s9-9 9-17a9 9 0 0 0-9-9Zm0 13a4 4 0 1 1 0-8 4 4 0 0 1 0 8ZM18 39a7 7 0 1 0 0-14 7 7 0 0 0 0 14Zm28 0a7 7 0 1 0 0-14 7 7 0 0 0 0 14ZM18 42c-8 0-13 4-13 10v4h26v-4c0-6-5-10-13-10Zm28 0c-8 0-13 4-13 10v4h26v-4c0-6-5-10-13-10Z"/></svg></div>
+                    <h3>SPORTS COMMUNITIES</h3>
+                    <p>Connecting athletes, coaches, brands and fans to build a stronger sports culture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="ecosystem" class="wrap ecosystem-section">
+        <div class="section-title"><strong>ONE ECOSYSTEM. ENDLESS POSSIBILITIES.</strong></div>
+        <div class="ecosystem-wrap">
+            <div class="ecosystem-copy">
+                <h2>Eight verticals. One vision.</h2>
+                <p>Number 10 Sports brings every sports capability together in one portfolio: content, coaching, competitions, facilities, management, and fan engagement.</p>
+            </div>
+            <div class="ecosystem-circle">
+                <div class="ecosystem-center">
+                    <h3>NUMBER 10 SPORTS</h3>
+                    <p>India's Integrated Sports Ecosystem</p>
+                </div>
+                <div class="ecosystem-item"><div class="eco-icon">▶</div><p class="eco-label">OTT Platform</p><p class="eco-copy">Live streaming, highlights, player profiles and fan engagement.</p></div>
+                <div class="ecosystem-item"><div class="eco-icon">🎙</div><p class="eco-label">YouthX</p><p class="eco-copy">Podcasts, athlete stories and sports entrepreneurship content.</p></div>
+                <div class="ecosystem-item"><div class="eco-icon">🏗</div><p class="eco-label">Infrastructure</p><p class="eco-copy">Designing and developing world-class sports facilities.</p></div>
+                <div class="ecosystem-item"><div class="eco-icon">🌍</div><p class="eco-label">Experiences</p><p class="eco-copy">Sports tourism, international tours and destination events.</p></div>
+                <div class="ecosystem-item"><div class="eco-icon">🏆</div><p class="eco-label">Event Management</p><p class="eco-copy">End-to-end management of tournaments and sporting events.</p></div>
+                <div class="ecosystem-item"><div class="eco-icon">🏟</div><p class="eco-label">Stadium Management</p><p class="eco-copy">Venue operations, revenue optimization and fan experience.</p></div>
+                <div class="ecosystem-item"><div class="eco-icon">🎓</div><p class="eco-label">Academies & Coaching</p><p class="eco-copy">Structured training programs and athlete development.</p></div>
+                <div class="ecosystem-item"><div class="eco-icon">👕</div><p class="eco-label">Franchise Management</p><p class="eco-copy">Professional team and franchise operations across leagues.</p></div>
+            </div>
+        </div>
+    </section>
+    <section id="verticals" class="wrap verticals-section">
+        <div class="section-title"><strong>Our Ecosystem</strong></div>
+        <p style="text-align:center; max-width:760px; margin:0 auto 40px; color:#5b5b5b;">Eight verticals. One vision. From live production and youth audio to facility development, events and team management.</p>
+        <div class="verticals-grid">
+            <div class="vertical-card" id="ott-platform" style="background-image:url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=900&q=80');"><div class="vertical-card-content"><div class="vertical-icon">▶</div><h3>OTT Platform</h3><p>Live streaming, highlights, sports media.</p></div></div>
+            <div class="vertical-card" id="youthx" style="background-image:url('https://images.unsplash.com/photo-1542736667-069246bdbc35?auto=format&fit=crop&w=900&q=80');"><div class="vertical-card-content"><div class="vertical-icon">🎙</div><h3>YouthX</h3><p>Podcasts, stories & sports conversations.</p></div></div>
+            <div class="vertical-card" id="infrastructure-development" style="background-image:url('https://images.unsplash.com/photo-1495562569060-2eec283d3391?auto=format&fit=crop&w=900&q=80');"><div class="vertical-card-content"><div class="vertical-icon">🏗</div><h3>Infrastructure</h3><p>Designing & building sports facilities.</p></div></div>
+            <div class="vertical-card" id="experiences" style="background-image:url('https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=900&q=80');"><div class="vertical-card-content"><div class="vertical-icon">🌍</div><h3>Experiences</h3><p>Sports tourism & destination events.</p></div></div>
+            <div class="vertical-card" style="background-image:url('https://images.unsplash.com/photo-1534258936925-2c8d78c3a7c4?auto=format&fit=crop&w=900&q=80');"><div class="vertical-card-content"><div class="vertical-icon">🏆</div><h3>Event Management</h3><p>End-to-end tournament operations.</p></div></div>
+            <div class="vertical-card" style="background-image:url('https://images.unsplash.com/photo-1501440933509-7babd5c364b0?auto=format&fit=crop&w=900&q=80');"><div class="vertical-card-content"><div class="vertical-icon">🏟</div><h3>Stadium Management</h3><p>Venue operations & revenue optimization.</p></div></div>
+            <div class="vertical-card" id="academies-coaching" style="background-image:url('https://images.unsplash.com/photo-1505842465776-3aaa9d89b6dc?auto=format&fit=crop&w=900&q=80');"><div class="vertical-card-content"><div class="vertical-icon">🎓</div><h3>Academies & Coaching</h3><p>Athlete development programs.</p></div></div>
+            <div class="vertical-card" style="background-image:url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=900&q=80');"><div class="vertical-card-content"><div class="vertical-icon">👕</div><h3>Franchise Management</h3><p>Professional team operations.</p></div></div>
+        </div>
+    </section>
+    <section id="vision" class="wrap vision-section">
+        <div class="section-title"><strong>VISION</strong></div>
+        <div class="statement-panel">
+            <h3>VISION</h3>
+            <p>To become India's most trusted sports ecosystem delivering world-class access to sport across all ages, skills, and locations.</p>
+        </div>
+    </section>
+    <section id="mission" class="wrap mission-section">
+        <div class="section-title"><strong>MISSION</strong></div>
+        <div class="statement-panel">
+            <h3>MISSION</h3>
+            <p>To design, build, operate, and scale infrastructure, content, experiences, and communities that unite and develop sporting talent.</p>
+        </div>
+    </section>
+
+    <section id="goals" class="wrap goals-section">
+        <div class="section-title"><strong>OUR GOALS</strong></div>
+        <div class="goals-list">
+            <ul>
+                <li>Establish Number 10 Sports as a leading sports ecosystem platform.</li>
+                <li>Own and operate a high-value infrastructure and intellectual property portfolio.</li>
+                <li>Contribute meaningfully to Indian sports development.</li>
+                <li>Build a resilient, technology-enabled, and investable organization.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="partner" class="wrap partner-section">
+        <div class="section-title"><strong>WHY PARTNER WITH US</strong></div>
+        <div class="partner-grid">
+            <div class="partner-card"><strong>For Participants</strong><p>Clear development pathways, quality experiences, and lifelong sporting opportunities.</p></div>
+            <div class="partner-card"><strong>For Partners</strong><p>Reliable execution, bundled services, and access to engaged audiences.</p></div>
+            <div class="partner-card"><strong>For Sponsors</strong><p>Integrated activations across events, digital content, OTT, and community engagement.</p></div>
+            <div class="partner-card"><strong>For Communities</strong><p>Accessible facilities and stronger local sports development.</p></div>
+            <div class="partner-card"><strong>For Investors</strong><p>Scalable business model, diversified revenue streams, and long-term growth opportunities.</p></div>
+        </div>
+    </section>
+
+    <section id="impact" class="impact-strip">
+        <div class="wrap stats-strip">
+            <div class="stats-card"><strong>8+</strong><p>Business verticals</p></div>
+            <div class="stats-card"><strong>360°</strong><p>Sports ecosystem</p></div>
+            <div class="stats-card"><strong>100%</strong><p>Integrated solutions</p></div>
+            <div class="stats-card"><strong>1</strong><p>Vision driving India's sports future</p></div>
+        </div>
+    </section>
+    <section id="contact" class="cta-section">
+        <div class="wrap">
+            <h2>LET'S BUILD INDIA'S SPORTS FUTURE</h2>
+            <p style="max-width:820px; margin:0 auto 12px; color:#555;">We are not building just another sports company. We are building India's leading sports ecosystem for the next generation. The vision is clear. The strategy is sound. The team is committed. The opportunity is enormous.</p>
+            <div class="cta-buttons">
+                <a href="#partner" class="btn-primary">PARTNER WITH US</a>
+                <a href="mailto:info@number10sports.com" class="btn-secondary">GET IN TOUCH</a>
+            </div>
+        </div>
+    </section>
+</main>
+<div class="journey-modal-overlay" id="journeyModalOverlay" aria-hidden="true">
+    <div class="journey-modal" role="dialog" aria-modal="true" aria-labelledby="journeyModalTitle">
+        <button type="button" class="journey-modal-close" aria-label="Close modal">&times;</button>
+        <h2 id="journeyModalTitle"></h2>
+        <div id="journeyModalDescription"></div>
+    </div>
+</div>
+<footer>© 2026 Number 10 Sports. All rights reserved.</footer>
+<script>
+const aboutNavbar = document.querySelector('.page-nav');
+let aboutNavTimeout;
+
+function showAboutNavbar() {
+    if (!aboutNavbar) return;
+    aboutNavbar.classList.add('visible', 'scrolled');
+    clearTimeout(aboutNavTimeout);
+    aboutNavTimeout = setTimeout(() => {
+        aboutNavbar.classList.remove('visible');
+    }, 2000);
+}
+
+if (aboutNavbar) {
+    aboutNavbar.classList.add('visible', 'scrolled');
+    aboutNavTimeout = setTimeout(() => {
+        aboutNavbar.classList.remove('visible');
+    }, 3000);
+
+    window.addEventListener('scroll', showAboutNavbar, { passive: true });
+    window.addEventListener('resize', showAboutNavbar);
+    window.addEventListener('mousemove', showAboutNavbar, { passive: true });
+    window.addEventListener('touchstart', showAboutNavbar, { passive: true });
+    window.addEventListener('keydown', showAboutNavbar);
+}
+
+const journeyModalContent = {
+    watch: {
+        title: 'WATCH',
+        description: [
+            'Our OTT Platform enables live streaming, match broadcasts, highlights, athlete profiles, tournament coverage and digital sports content.',
+            'Through our media capabilities we help sports organizations, leagues, academies and events reach wider audiences and increase fan engagement.'
+        ]
+    },
+    listen: {
+        title: 'LISTEN',
+        description: [
+            'YouthX is our audio and podcast platform focused on athlete stories, sports entrepreneurship, youth development and industry conversations.',
+            'We create content that informs, inspires and connects the next generation of sports participants.'
+        ]
+    },
+    play: {
+        title: 'PLAY',
+        description: [
+            'We operate academies, coaching programmes and athlete development initiatives designed to improve participation and performance.',
+            'Our programmes support grassroots development and structured learning pathways.'
+        ]
+    },
+    compete: {
+        title: 'COMPETE',
+        description: [
+            'We organize tournaments, leagues, championships and competitive sporting events.',
+            'From planning and operations to branding and execution, we manage the complete competition lifecycle.'
+        ]
+    },
+    build: {
+        title: 'BUILD',
+        description: [
+            'We develop sports infrastructure including stadiums, training centres, academies, community sports facilities and integrated sports complexes.',
+            'Our focus is creating sustainable sporting environments for long-term growth.'
+        ]
+    },
+    grow: {
+        title: 'GROW',
+        description: [
+            'We support franchise management, sports experiences, partnerships and ecosystem expansion.',
+            'Our objective is to create long-term value for athletes, organizations, communities and investors.'
+        ]
+    }
+};
+
+const journeyModalOverlay = document.getElementById('journeyModalOverlay');
+const journeyModalTitle = document.getElementById('journeyModalTitle');
+const journeyModalDescription = document.getElementById('journeyModalDescription');
+const journeyModalClose = document.querySelector('.journey-modal-close');
+const journeyCards = document.querySelectorAll('.journey-card[data-journey]');
+let lastFocusedJourneyCard = null;
+
+function openJourneyModal(key, trigger) {
+    const content = journeyModalContent[key];
+    if (!content || !journeyModalOverlay || !journeyModalTitle || !journeyModalDescription) return;
+
+    lastFocusedJourneyCard = trigger;
+    journeyModalTitle.textContent = content.title;
+    journeyModalDescription.innerHTML = content.description.map((paragraph) => `<p>${paragraph}</p>`).join('');
+    journeyModalOverlay.classList.add('is-open');
+    journeyModalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (journeyModalClose) journeyModalClose.focus();
+}
+
+function closeJourneyModal() {
+    if (!journeyModalOverlay) return;
+
+    journeyModalOverlay.classList.remove('is-open');
+    journeyModalOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocusedJourneyCard) lastFocusedJourneyCard.focus();
+}
+
+journeyCards.forEach((card) => {
+    card.addEventListener('click', () => openJourneyModal(card.dataset.journey, card));
+});
+
+if (journeyModalClose) {
+    journeyModalClose.addEventListener('click', closeJourneyModal);
+}
+
+if (journeyModalOverlay) {
+    journeyModalOverlay.addEventListener('click', (event) => {
+        if (event.target === journeyModalOverlay) closeJourneyModal();
+    });
+}
+
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && journeyModalOverlay && journeyModalOverlay.classList.contains('is-open')) {
+        closeJourneyModal();
+    }
+});
+</script>
+</body>
+</html>
